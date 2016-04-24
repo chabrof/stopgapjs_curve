@@ -5,17 +5,17 @@
 <body id="body">
 
 <script id="graph" type="text/xml">
-	<svg width="1000" height="800" style="width:1000px;height:800px;border:black 1px solid;">
-		{{{content}}}
-	</svg>
+  <svg width="1000" height="800" style="width:1000px;height:800px;border:black 1px solid;">
+    {{{content}}}
+  </svg>
 </script>
 
 <script id="point" type="text/xml">
-	<circle cx="{{x}}" cy="{{y}}" r="1" fill="red" stroke="{{couleur}}" stroke-width="{{epaisseur}}"  />
+  <circle cx="{{x}}" cy="{{y}}" r="1" fill="red" stroke="{{couleur}}" stroke-width="{{epaisseur}}"  />
 </script>
 
 <script id="ligne" type="text/xml">
-	<line x1="{{x1}}" y1="{{y1}}" x2="{{x2}}" y2="{{y2}}" stroke="{{couleur}}" stroke-width="{{epaisseur}}"  />
+  <line x1="{{x1}}" y1="{{y1}}" x2="{{x2}}" y2="{{y2}}" stroke="{{couleur}}" stroke-width="{{epaisseur}}"  />
 </script>
 
 <script>
@@ -49,10 +49,10 @@
     curve.setDefinition(10)
     curve.setCurvLength(8)
     //curve.setCurvLength(2)
-  	var xa1 = 150;
-  	var ya1 = 150;
-  	var xa2 = 200;
-  	var ya2 = 100;
+    var xa1 = 150;
+    var ya1 = 150;
+    var xa2 = 200;
+    var ya2 = 100;
     /*
     var xa1 = 150;
     var ya1 = 150;
@@ -62,10 +62,10 @@
     curve.setOrigPoint(xa1, ya1)
     curve.setOrigControlPoint(xa2, ya2)
 
-    var	xb1 = 700;
-  	var yb1 = 400;
-  	var xb2 = 600;
-  	var yb2 = 450;
+    var xb1 = 700;
+    var yb1 = 400;
+    var xb2 = 600;
+    var yb2 = 450;
     /*
     xb2 = (xb1 - xa1) - (xa2 - xa1) + xb1
     yb2 = (yb1 - ya1) - (ya2 - ya1) + yb1*/
@@ -76,24 +76,24 @@
     curve.init()
     var unitCorrectionVector = curve.getUnitCorrectionVector()
     var virtualEndPoint = curve.getVirtualEndPoint()
-  	console.log('nb_deplac : ' + curve.getNbPoints())
+    console.log('nb_deplac : ' + curve.getNbPoints())
 
     console.log('Speed orig vector :', curve.getOriginSpeedVector().x, curve.getOriginSpeedVector().y)
     console.log('Speed orig vector :', curve.getDestinSpeedVector().x, curve.getDestinSpeedVector().y)
-  	console.log('diff : ' + curve.getDiffVector().x, curve.getDiffVector().y)
-  	console.log('unit : ' + unitCorrectionVector.x + ', ' + unitCorrectionVector.y)
-  	console.log('end point : ' + virtualEndPoint.x + ', ' + virtualEndPoint.y)
+    console.log('diff : ' + curve.getDiffVector().x, curve.getDiffVector().y)
+    console.log('unit : ' + unitCorrectionVector.x + ', ' + unitCorrectionVector.y)
+    console.log('end point : ' + virtualEndPoint.x + ', ' + virtualEndPoint.y)
 
-  	//dessin des vecteurs vitesse
-  	ajouterLigne(xa1, ya1, xa2, ya2, 2, 'black')
-  	ajouterLigne(xb1, yb1, xb2, yb2, 2, 'black')
+    //dessin des vecteurs vitesse
+    ajouterLigne(xa1, ya1, xa2, ya2, 2, 'black')
+    ajouterLigne(xb1, yb1, xb2, yb2, 2, 'black')
 
-  	//dessin des 2 points de base
-  	ajouterPoint(xa1, ya1, 6, 'blue')
-  	ajouterPoint(xb1, yb1, 6, 'blue')
-  	//dessin des 2 points de fin de vecteur direction
-  	ajouterPoint(xa2, ya2, 2, 'blue')
-  	ajouterPoint(xb2, yb2, 2, 'blue')
+    //dessin des 2 points de base
+    ajouterPoint(xa1, ya1, 6, 'blue')
+    ajouterPoint(xb1, yb1, 6, 'blue')
+    //dessin des 2 points de fin de vecteur direction
+    ajouterPoint(xa2, ya2, 2, 'blue')
+    ajouterPoint(xb2, yb2, 2, 'blue')
 
     curve.render(
       function (point) {
@@ -105,38 +105,38 @@
     // The MIT License (MIT)
     // Copyright (c) 2013 Mikola Lysenko */
     function hermite(p0, v0, p1, v1, t, f) {
-  	  var ti  = (t-1), t2 = t*t, ti2 = ti*ti,
+      var ti  = (t-1), t2 = t*t, ti2 = ti*ti,
           h00 = 2*t*t*t-3*t*t+1,
           h10 = t*t*t-2*t*t + t,
           h01 = -2*t*t*t+3*t*t,
           h11 = t*t*t-t*t
-  	  if (p0.length) {
-  	    if (!f) {
-  	      f = new Array(p0.length)
-  	    }
-  	    for (var i=p0.length-1; i>=0; --i) {
-  	      f[i] = h00*p0[i] + h10*v0[i] + h01*p1[i] + h11*v1[i]
-  	    }
-  	    return f
-  	  }
-  	  return h00*p0 + h10*v0 + h01*p1 + h11*v1
-  	}
+      if (p0.length) {
+        if (!f) {
+          f = new Array(p0.length)
+        }
+        for (var i=p0.length-1; i>=0; --i) {
+          f[i] = h00*p0[i] + h10*v0[i] + h01*p1[i] + h11*v1[i]
+        }
+        return f
+      }
+      return h00*p0 + h10*v0 + h01*p1 + h11*v1
+    }
 
-  	// Compute intial position and velocity
-  	var k = 10
-  	var k2 = 10
-  	var initial_position = [xa1, ya1]
-  		, initial_velocity = [(xa2 - xa1) * k, (ya2 - ya1) * k]
-  		, final_positions  = [xb1, yb1]
-  		, final_velocity   = [(xb2 - xb1) * k2, (yb2 - yb1) * k2]
+    // Compute intial position and velocity
+    var k = 10
+    var k2 = 10
+    var initial_position = [xa1, ya1]
+      , initial_velocity = [(xa2 - xa1) * k, (ya2 - ya1) * k]
+      , final_positions  = [xb1, yb1]
+      , final_velocity   = [(xb2 - xb1) * k2, (yb2 - yb1) * k2]
 
-  	// Plot curve
-  	var dot;
-  	for(var t=0.0; t<1.0; t+=0.02) {
-  		console.log(dot = hermite(initial_position, initial_velocity, final_positions, final_velocity, t))
-  		ajouterPoint(dot[0], dot[1], 2, 'red')
-  	}
-  	render()
+    // Plot curve
+    var dot;
+    for(var t=0.0; t<1.0; t+=0.02) {
+      console.log(dot = hermite(initial_position, initial_velocity, final_positions, final_velocity, t))
+      ajouterPoint(dot[0], dot[1], 2, 'red')
+    }
+    render()
   });
 
 </script>
