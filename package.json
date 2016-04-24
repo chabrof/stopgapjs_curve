@@ -1,0 +1,14 @@
+{
+  "name": "stopgapjs_curve",
+  "description": "Curve with initial and final velocities, seems litely like Hermite splines (but this is not the same) : the goal is to move according to theses velocities and apply a progressive correction in order to be exactly on the final dot at the end",
+  "version": "0.5.0",
+  "license": "MIT",
+  "author": {
+    "name": "François Chabrou",
+    "email": "developer@stopgapjs.org",
+    "url": "http://www.stopgapjs.org"
+  },
+  "main": "main.js",
+  "homepage": "http://www.stopgapjs.org/#curve",
+  "readme": ""
+}

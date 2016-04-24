@@ -1,0 +1,18 @@
+{
+  "name": "stopgapjs_curve__sample",
+  "description": "Sample for StopgapJS Curve",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "François Chabrou",
+    "email": "developer@stopgapjs.org",
+    "url": "http://www.stopgapjs.org"
+  },
+  "main": "index.html",
+  "homepage": "http://www.stopgapjs.org/#curve",
+  "dependencies": {
+    "requirejs": ">=2.1.14",
+		"mustache": ">=2.2.1"
+  },
+  "readme": "#stopgapjs"
+}
